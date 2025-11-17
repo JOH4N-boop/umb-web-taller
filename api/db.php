@@ -1,15 +1,14 @@
 <?php
-// 1. Conexión con MySQL local (XAMPP)
+// Conexión a MySQL local
 $conexion = mysqli_connect(
-  "localhost",   // host
-  "root",        // usuario por defecto de XAMPP
-  "",            // contraseña (vacía en XAMPP)
-  "tareas_db"    // nombre de tu base de datos
+    "localhost",     // Servidor
+    "root",          // Usuario
+    "",              // Contraseña (en XAMPP normalmente es vacío)
+    "tareas_db"      // Nombre de tu base de datos
 );
 
-// 2. Validación
-if(mysqli_connect_errno()){
-  echo "Error al conectar a MySQL: " . mysqli_connect_error();
-  exit();
+// Validación de conexión
+if (!$conexion) {
+    die("Error al conectar a MySQL: " . mysqli_connect_error());
 }
 ?>

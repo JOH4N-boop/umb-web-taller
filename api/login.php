@@ -18,7 +18,7 @@ if ($metodo === "POST") {
     }
 
     $usuario = mysqli_real_escape_string($conexion, $data["usuario"]);
-    $contrasena = md5($data["contrasena"]);  // contraseña cifrada
+    $contrasena = md5($data["contrasena"]);  // contraseña ci       frada
 
     // Buscar usuario
     $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'";

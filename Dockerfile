@@ -1,11 +1,15 @@
-# Usar una imagen oficial de PHP con Apache
+# Imagen oficial de PHP con Apache
 FROM php:8.2-apache
 
-# Instalar extensiones necesarias (como mysqli para MySQL)
+# Habilitar extensiones necesarias
 RUN docker-php-ext-install mysqli
 
-# Copiar los archivos del backend al servidor web
+# Copiar tu API (carpeta api o archivos sueltos)
 COPY . /var/www/html/
 
-# Habilitar mod_rewrite para URLs amigables (opcional)
+# Dar permisos correctos
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
+
+# Habilitar mod_rewrite (opcional)
 RUN a2enmod rewrite

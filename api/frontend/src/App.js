@@ -4,22 +4,21 @@ function App() {
   const [tareas, setTareas] = useState([]);
   const [titulo, setTitulo] = useState("");
 
-  // Cargar tareas al iniciar
+
   useEffect(() => {
     fetch("http://localhost/api/index.php")
       .then((res) => res.json())
       .then((data) => setTareas(data));
   }, []);
 
-  // Enviar nueva tarea
-  const agregarTarea = (e) => {
+  const agregarTarea = (e) => { 
     e.preventDefault();
 
     fetch("http://localhost/api/index.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-      },
+      },  
       body: JSON.stringify({ titulo }),
     }).then(() => {
       setTareas([...tareas, { titulo }]);
